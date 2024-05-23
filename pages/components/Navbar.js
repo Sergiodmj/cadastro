@@ -1,34 +1,38 @@
 import Link from "next/link"
 import Image from "next/image"
 
+import styles from '../../styles/navbar.module.css'
+
 export default function Navbar() {
 
     return (
-        <nav>
-            <div>
+        <nav className={styles.navbar}>
+            <div className={styles.logo}>
                 <Image
                     src={"/Images/logo.png"}
-                    width="60"
-                    height="60"
+                    width="70"
+                    height="70"
                     alt="Logo"
                 />
-                <h1>Sistema</h1>
+
             </div>
 
-            <ul>
+            <ul className={styles.link_items}>
                 <li>
-                    <Link href="/">
-                        Home
+                    <Link legacyBehavior href="/">
+                        <a>Cadastro</a>
                     </Link>
                 </li>
                 <li>
-                    <Link href="/about">
-                        Sobre
+                    <Link legacyBehavior href="/about">
+                        <a>Sobre</a>
                     </Link>
                 </li>
             </ul>
 
         </nav>
+
+
     )
 
 }
