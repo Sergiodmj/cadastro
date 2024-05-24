@@ -17,7 +17,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link legacyBehavior href="/about">
+          <Link legacyBehavior href="../cliente">
             <a>Cliente</a>
           </Link>
         </li>
