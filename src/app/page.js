@@ -1,16 +1,12 @@
-import Link from "next/link";
-import Footer from "../../pages/components/footer";
-import Navbar from "../../pages/components/navbar";
-import Head from "next/head";
+import style from "../app/page.module.css"
+
+import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <Link rel="shortcut icon" href="/Images/favicon.ico" />
-        <title>Sistema</title>
-      </Head>
-      <Navbar />
-      <Footer /></>
-  )
+
+
+    </>
+  );
 }

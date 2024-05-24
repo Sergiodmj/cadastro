@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import styles from "../../styles/navbar.module.css";
+import styles from "../../../styles/navbar.module.css";
 
 export default function Navbar() {
   return (
@@ -12,13 +12,13 @@ export default function Navbar() {
 
       <ul className={styles.link_items}>
         <li>
-          <Link legacyBehavior href="/">
-            <a>Cadastro</a>
+          <Link href="/">
+            Cadastro
           </Link>
         </li>
         <li>
-          <Link legacyBehavior href="../cliente">
-            <a>Cliente</a>
+          <Link href="/cliente/">
+            Cliente
           </Link>
         </li>
       </ul>
