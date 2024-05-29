@@ -1,20 +1,24 @@
+Consumir e rendenizar a API{
+ async function getClientes() {
+  const res = await fetch("http://n8npay.zapto.org:9099/api-beck/");
 
-export async function getStaticProps() {
-    const api = "http://n8npay.zapto.org:9099/api-beck/";
+  const clientes = await res.json();
 
-    const res = await fetch(api);
-    const data = await res.json();
-
-    return {
-        props: {
-            data,
-        },
-    };
+  return clientes;
 }
 
-<Image className={style.image}
-    src="/images/fundo.png"
-    width="300"
-    height="300"
-    alt="Engrenagem"
-/>
+export default async function Cliente() {
+  const clientes = await getClientes();
+  return (
+    <>
+      <h1>Lista</h1>
+      <ul>
+        {clientes.map((cliente) => (
+          <li key={cliente.id}>{cliente.first_name}</li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+}

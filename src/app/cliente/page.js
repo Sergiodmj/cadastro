@@ -1,30 +1,21 @@
-async function getData() {
-    const res = await fetch('http://n8npay.zapto.org:9099/api-beck/')
+async function getClientes() {
+  const res = await fetch("http://n8npay.zapto.org:9099/api-beck/");
 
+  const clientes = await res.json();
 
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-    }
-
-    const data = await res.json()
-
-    console.log(data);
-
-    return {
-        props: {
-            clientes: data.results,
-        },
-    }
+  return clientes;
 }
 
-
-export default function Cliente({ data }) {
-    return (
-        <>
-            <div>
-                teste
-            </div>
-        </>
-    )
+export default async function Cliente() {
+  const clientes = await getClientes();
+  return (
+    <>
+      <h1>Lista</h1>
+      <ul>
+        {clientes.map((cliente) => (
+          <li key={cliente.id}>{cliente.first_name}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
