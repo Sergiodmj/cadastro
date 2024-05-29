@@ -1,3 +1,5 @@
+import style from "../../../styles/table.module.css"
+
 async function getClientes() {
   const res = await fetch("http://n8npay.zapto.org:9099/api-beck/");
 
@@ -6,16 +8,42 @@ async function getClientes() {
   return clientes;
 }
 
+const headers = [
+  "ID",
+  "NOME",
+  "SOBRENOME",
+  "EMAIL",
+  "DOCUMENTO",
+]
+
 export default async function Cliente() {
   const clientes = await getClientes();
   return (
     <>
-      <h1>Lista</h1>
-      <ul>
-        {clientes.map((cliente) => (
-          <li key={cliente.id}>{cliente.first_name}</li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          {headers.map((header) => (
+            <th key={header} className={style.cabecalho}>
+              {header}
+            </th>
+          ))}
+        </thead>
+        <tbody>
+          {clientes.map((cliente) => (
+            <tr key={cliente.id}>
+              <td>{cliente.id}</td>
+              <td>{cliente.first_name}</td>
+              <td>{cliente.last_name}</td>
+              <td>{cliente.email}</td>
+              <td>{cliente.document}</td>
+              <td><button>Alterar</button></td>
+              <td><button>Excluir</button></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }
+
+
