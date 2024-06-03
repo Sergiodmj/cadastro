@@ -12,7 +12,7 @@ export default function Navbar() {
 
       <ul className={styles.link_items}>
         <li>
-          <Link href="/">
+          <Link href="/cadastro">
             Cadastro
           </Link>
         </li>
