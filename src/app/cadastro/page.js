@@ -8,12 +8,7 @@ export default function Cadastro() {
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify(cliente),
-        }).then((resp) => resp.json())
-            .then((data) => {
-                console.log(data)
-            })
-            .catch(err => console.log(err))
+        })
     }
 
     const submit = (e) => {
