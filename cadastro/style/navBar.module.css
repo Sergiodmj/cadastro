@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+    background-color: aliceblue;
+}
+
+.link {
+    display: flex;
+    list-style: none;
+    justify-items: center;
+}
+
+.link li {
+    margin-right: 1.3em;
+
+}
+
+.link a {
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    transition: .4s;
+    border-bottom: 2px solid transparent;
+}
+
+.link a:hover {
+    border-color: blueviolet;
+    color: blueviolet;
+}
