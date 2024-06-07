@@ -11,6 +11,11 @@ export default function Navbar() {
                 <ul className={style.link}>
                     <li>
                         <Link href="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/pages/cadastroClientes">
                             Cadastro
                         </Link>
                     </li>

@@ -5,26 +5,32 @@ export default async function Cliente() {
         // força o navegador a não guardar o cash, ele vai fazer uma nova requisição cada vez que for executado
         cache: 'no-cache',
 
+        //método que faz atualizar o componente assim que alterado algum dado, sem precisar atualizar a página.
+        next: {
+            tags: ['tabela-cliente']
+        }
+
         // caso queira limitar o tempo em que o navegador guarda o cash
         // next: {
         //     revalidate: 60
         // }
 
     })
+
     const data = await res.json();
     
     return (
         <>
             <table>
-                <thead>
+                <tbody>
+                <tr>
                     <th>ID</th>
                     <th>NOME</th>
                     <th>SOBRENOME</th>
                     <th>E-MAIL</th>
                     <th>DOCUMENTO</th>
                     <th></th>
-                </thead>
-                <tbody>
+                </tr>
                     {data.map((data: any) => {
                         return (
                             <tr key={data.id}>
