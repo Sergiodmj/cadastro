@@ -17,6 +17,7 @@ export default async function Cliente() {
 
     })
 
+    
     const data = await res.json();
     
     return (
