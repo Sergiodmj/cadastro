@@ -41,7 +41,7 @@ export default async function Cliente() {
                                 <td>{ data.email }</td>
                                 <td>{ data.document }</td>
                                 <td><button type="button">Alterar</button></td>
-                                <td><button type="button">Escluir</button></td>
+                                <td><button type="button">Escluir 1</button></td>
                             </tr>
                         )
                     })}
