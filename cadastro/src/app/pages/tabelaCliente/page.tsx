@@ -63,8 +63,8 @@ export default async function Cliente() {
                                 <td>{ data.last_name }</td>
                                 <td>{ data.email }</td>
                                 <td>{ data.document }</td>
-                                <td><button>Alterar</button></td>
-                                <td><button>Escluir</button></td>
+                                <td><button type="button">Alterar</button></td>
+                                <td><button type="button">Escluir</button></td>
                             </tr>
                         )
                     })}
