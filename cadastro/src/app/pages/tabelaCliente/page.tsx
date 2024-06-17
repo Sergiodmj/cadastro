@@ -1,7 +1,7 @@
 import { revalidateTag } from "next/cache";
-import { DeleteData } from "./dataDelete";
 
 export default async function Cliente() {
+    'use server'
     const res = await fetch('http://n8npay.zapto.org:9099/api-beck/', {
 
         // força o navegador a não guardar o cash, ele vai fazer uma nova requisição cada vez que for executado
@@ -19,14 +19,32 @@ export default async function Cliente() {
 
     })
 
-    function alerta() {
-        return (console.log('clicou em mim'))
+    async function DeleteData({id}) {
+     'use server'
+    console.log(typeof id)
+    try {
+        const response = await fetch(`${"http://n8npay.zapto.org:9099/api-beck/delete.php/"}${id}`, { // Faz uma requisição DELETE para o URL fornecido com o ID específico.
+            method: 'GET', // Define o método da requisição como DELETE.
+        });
+
+        if (!response.ok) { // Verifica se a resposta HTTP indica um sucesso (código 2xx).
+            throw new Error(`Failed to delete data: ${response.statusText}`); // Se a resposta não for bem-sucedida, lança um erro com a mensagem da resposta.
+        }
+
+        console.log('Data deleted successfully'); // Se a exclusão for bem-sucedida, exibe uma mensagem de sucesso.
+        } catch (error) { // Captura e trata quaisquer erros que ocorram durante o processo.
+        console.error('Error deleting data:', error); // Se ocorrer um erro, exibe uma mensagem de erro com detalhes.
+        }
+        
+     revalidateTag('tabela-cliente')
+         
     }
     
     const data = await res.json();
     
     return (
         <>
+            
             <table>
                 <tbody>
                 <tr>
@@ -46,14 +64,19 @@ export default async function Cliente() {
                                 <td>{ data.email }</td>
                                 <td>{ data.document }</td>
                                 <td><button>Alterar</button></td>
-                                <td><button onClick={alerta()}>Excluir</button></td>
+                                <td>
+                                    <form action={DeleteData(data)}>
+                                        <button type="submit">
+                                            <span>Delete</span>
+                                        </button>
+                                    </form>
+                                </td>
+                                
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
-
-            <button>teste</button>
         </>
     )
 }
