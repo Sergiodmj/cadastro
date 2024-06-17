@@ -38,7 +38,6 @@ export default function CadastroClientes() {
                 <input type="text" name="email" placeholder="E-mail" />
                 <button type="submit">Salvar</button>
             </form>
-
             <Cliente/>
         </>
     )
