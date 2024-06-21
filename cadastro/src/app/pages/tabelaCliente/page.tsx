@@ -65,9 +65,11 @@ export default async function Cliente() {
                 <td>{data.email}</td>
                 <td>{data.document}</td>
                 <td>
-                  <Link href="/pages/cadastroClientes">
-                    <button>Alterar</button>
-                  </Link>
+                  <form>
+                    <Link href="/pages/alterar">
+                      <button type="submit">Alterar</button>
+                    </Link>
+                  </form>
                 </td>
                 <td>
                   <form action={deleteCliente} method="POST">
@@ -83,3 +85,5 @@ export default async function Cliente() {
     </>
   );
 }
+
+//http://n8npay.zapto.org:9099/api-beck/edit.php
