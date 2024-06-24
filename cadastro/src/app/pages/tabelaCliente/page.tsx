@@ -1,5 +1,4 @@
 import { revalidateTag } from "next/cache";
-import Link from "next/link";
 
 export default async function Cliente() {
   "use server";
@@ -43,6 +42,29 @@ export default async function Cliente() {
     //Indica qual o componente deve ser atualizado depois da execução da função
     revalidateTag("tabela-cliente");
   }
+  async function AlteraCliente(form: FormData) {
+    "use server";
+
+    //Converte os dados em um objeto do next
+    const data = Object.fromEntries(form);
+
+    //Faz uma validação, se o objeto não conter dados, ele simplesmente retorna e nao salva nada
+    if (!data) {
+      return;
+    }
+
+    // Faz uma requisição POST pasa a rota
+    await fetch("http://n8npay.zapto.org:9099/api-beck/edit.php", {
+      //Informa o metodo que esta usando
+      method: "POST",
+      body: JSON.stringify(data), //encaminha os dodos do objeto para a rota como JSON.
+    });
+
+    console.log(data);
+
+    //Indica qual o componente deve ser atualizado depois da execução da função
+    revalidateTag("tabela-cliente");
+  }
 
   return (
     <>
@@ -65,16 +87,25 @@ export default async function Cliente() {
                 <td>{data.email}</td>
                 <td>{data.document}</td>
                 <td>
-                  <form>
-                    <Link href="/pages/alterar">
-                      <button type="submit">Alterar</button>
-                    </Link>
-                  </form>
+                  <button>Alterar</button>
                 </td>
                 <td>
                   <form action={deleteCliente} method="POST">
                     <input type="hidden" name="id" value={data.id} />
                     <button type="submit">Excluir</button>
+                  </form>
+                </td>
+                <td>
+                  <form action={AlteraCliente} method="POST">
+                    <input type="hidden" name="id" value={data.id} />
+                    <input
+                      name="nome"
+                      contentEditable="true"
+                      value={data.first_name}
+                    />
+                    <input name="sobrenome" />
+                    <input name="email" />
+                    <button type="submit">Alterar</button>
                   </form>
                 </td>
               </tr>
