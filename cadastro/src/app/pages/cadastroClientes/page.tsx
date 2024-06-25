@@ -1,5 +1,6 @@
 import { revalidateTag } from "next/cache";
 import Cliente from "../tabelaCliente/page";
+import Imput from "../../../../components/Imput";
 
 export default function CadastroClientes() {
   // Recebe os dados do dormulario
@@ -21,9 +22,11 @@ export default function CadastroClientes() {
     //Indica qual o componente deve ser atualizado depois da execução da função
     revalidateTag("tabela-cliente");
   }
+
   return (
     <>
       <form action={createCliente} method="POST">
+        <Imput typo="text" dica="teste" />
         <input type="text" name="nome" placeholder="Nome" required />
         <input type="text" name="sobrenome" placeholder="Sobrenome" required />
         <input type="text" name="email" placeholder="E-mail" required />
