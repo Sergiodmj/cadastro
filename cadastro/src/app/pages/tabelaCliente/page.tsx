@@ -98,9 +98,13 @@ export default async function Cliente() {
                 <td>
                   <form action={AlteraCliente} method="POST">
                     <input type="hidden" name="id" value={data.id} />
-                    <input type="text" name="nome" value={ data.id } />
-                    <input name="sobrenome" />
-                    <input name="email" />
+                    <input
+                      type="text"
+                      name="nome"
+                      defaultValue={data.first_name}
+                    />
+                    <input name="sobrenome" defaultValue={data.last_name} />
+                    <input name="email" defaultValue={data.email} />
                     <button type="submit">Alterar</button>
                   </form>
                 </td>
